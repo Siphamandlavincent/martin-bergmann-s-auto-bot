@@ -109,7 +109,7 @@ export function OrderChat() {
                     : "text-foreground",
                 )}
               >
-                {message.content}
+                <RichText text={message.content} />
               </div>
             ))}
             {busy && <p className="animate-pulse text-sm text-muted-foreground">Checking stock…</p>}
