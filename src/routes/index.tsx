@@ -111,9 +111,10 @@ function Home() {
               <Button size="lg" asChild>
                 <a href="#catalog">Browse the catalog</a>
               </Button>
-              <Button size="lg" variant="outline" asChild>
+              <Button size="lg" variant="hero" asChild>
                 <a href="#contact">Book a diagnostic</a>
               </Button>
+
             </div>
           </div>
         </section>
