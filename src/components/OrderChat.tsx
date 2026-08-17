@@ -16,6 +16,22 @@ const GREETING: Msg = {
     "Hi, I'm Bergie from Martin Bergmann. Tell me your vehicle and the part you need and I'll quote you and place the order right here.",
 };
 
+/** Renders the light markdown (**bold**) the assistant uses, without a parser. */
+function RichText({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(/(\*\*[^*]+\*\*)/g).map((chunk, index) =>
+        chunk.startsWith("**") && chunk.endsWith("**") ? (
+          <strong key={index}>{chunk.slice(2, -2)}</strong>
+        ) : (
+          <span key={index}>{chunk.replace(/^\s*\*\s+/gm, "• ")}</span>
+        ),
+      )}
+    </>
+  );
+}
+
+
 export function OrderChat() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([GREETING]);
