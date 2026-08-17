@@ -14,7 +14,87 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      orders: {
+        Row: {
+          created_at: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          id: string
+          items: Json
+          notes: string
+          source: string
+          status: string
+          total: number
+          vehicle: string
+        }
+        Insert: {
+          created_at?: string
+          customer_email?: string
+          customer_name: string
+          customer_phone?: string
+          id?: string
+          items?: Json
+          notes?: string
+          source?: string
+          status?: string
+          total?: number
+          vehicle?: string
+        }
+        Update: {
+          created_at?: string
+          customer_email?: string
+          customer_name?: string
+          customer_phone?: string
+          id?: string
+          items?: Json
+          notes?: string
+          source?: string
+          status?: string
+          total?: number
+          vehicle?: string
+        }
+        Relationships: []
+      }
+      parts: {
+        Row: {
+          brand: string
+          category: string
+          created_at: string
+          description: string
+          fitment: string
+          id: string
+          image_url: string | null
+          in_stock: boolean
+          name: string
+          price: number
+        }
+        Insert: {
+          brand?: string
+          category: string
+          created_at?: string
+          description?: string
+          fitment?: string
+          id?: string
+          image_url?: string | null
+          in_stock?: boolean
+          name: string
+          price?: number
+        }
+        Update: {
+          brand?: string
+          category?: string
+          created_at?: string
+          description?: string
+          fitment?: string
+          id?: string
+          image_url?: string | null
+          in_stock?: boolean
+          name?: string
+          price?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
