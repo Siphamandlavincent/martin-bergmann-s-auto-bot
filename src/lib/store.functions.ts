@@ -14,7 +14,9 @@ export type Part = {
   fitment: string;
   price: number;
   in_stock: boolean;
+  image_url: string | null;
 };
+
 
 function publicClient() {
   const key = process.env["SUPABASE_PUBLISHABLE_KEY"]!;
@@ -36,7 +38,7 @@ function publicClient() {
 export const listParts = createServerFn({ method: "GET" }).handler(async (): Promise<Part[]> => {
   const { data, error } = await publicClient()
     .from("parts")
-    .select("id, name, brand, category, description, fitment, price, in_stock")
+    .select("id, name, brand, category, description, fitment, price, in_stock, image_url")
     .order("category")
     .order("name");
 
