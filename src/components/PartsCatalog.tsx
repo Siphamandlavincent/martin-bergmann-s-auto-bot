@@ -5,7 +5,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { productImage } from "@/lib/product-images";
 import type { Part } from "@/lib/store.functions";
+
 
 export function PartsCatalog({ parts }: { parts: Part[] }) {
   const [query, setQuery] = useState("");
@@ -98,7 +100,9 @@ export function PartsCatalog({ parts }: { parts: Part[] }) {
               <p className="font-display text-2xl text-primary">R {part.price.toFixed(2)}</p>
             </CardContent>
           </Card>
-        ))}
+          );
+        })}
+
       </div>
 
       {filtered.length === 0 && (
