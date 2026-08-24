@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Search } from "lucide-react";
+import { Search, Wrench } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -58,24 +58,33 @@ export function PartsCatalog({ parts }: { parts: Part[] }) {
         </div>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((part) => {
           const image = productImage(part.image_url);
           return (
-          <Card key={part.id} className="overflow-hidden border-2 transition-shadow hover:shadow-hard">
-            {image ? (
-              <div className="border-b-2 border-ink bg-surface">
+          <Card
+            key={part.id}
+            className="flex h-full flex-col gap-0 overflow-hidden border-2 py-0 transition-shadow hover:shadow-hard"
+          >
+            <div className="relative flex aspect-[4/3] items-center justify-center border-b-2 border-ink bg-surface">
+              {image ? (
                 <img
                   src={image}
                   alt={`${part.brand} ${part.name}`}
                   width={1024}
                   height={1024}
                   loading="lazy"
-                  className="mx-auto aspect-square w-full max-w-xs object-contain p-4 mix-blend-multiply"
+                  className="size-full object-contain p-4 mix-blend-multiply"
                 />
-              </div>
-            ) : null}
-            <CardContent className="space-y-3 p-5">
+              ) : (
+                <>
+                  <Wrench className="size-10 text-muted-foreground/60" />
+                  <div className="racing-stripe absolute inset-x-0 bottom-0 h-1.5 opacity-60" />
+                </>
+              )}
+            </div>
+            <CardContent className="flex flex-1 flex-col space-y-3 p-5">
+
               <div className="flex items-start justify-between gap-3">
                 <Badge variant="secondary" className="uppercase">
                   {part.category}
