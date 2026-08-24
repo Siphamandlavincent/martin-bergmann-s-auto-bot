@@ -57,8 +57,22 @@ export function PartsCatalog({ parts }: { parts: Part[] }) {
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((part) => (
-          <Card key={part.id} className="border-2 transition-shadow hover:shadow-hard">
+        {filtered.map((part) => {
+          const image = productImage(part.image_url);
+          return (
+          <Card key={part.id} className="overflow-hidden border-2 transition-shadow hover:shadow-hard">
+            {image ? (
+              <div className="border-b-2 border-ink bg-surface">
+                <img
+                  src={image}
+                  alt={`${part.brand} ${part.name}`}
+                  width={1024}
+                  height={1024}
+                  loading="lazy"
+                  className="mx-auto aspect-square w-full max-w-xs object-contain p-4 mix-blend-multiply"
+                />
+              </div>
+            ) : null}
             <CardContent className="space-y-3 p-5">
               <div className="flex items-start justify-between gap-3">
                 <Badge variant="secondary" className="uppercase">
@@ -68,6 +82,7 @@ export function PartsCatalog({ parts }: { parts: Part[] }) {
                   {part.in_stock ? "In stock" : "On order"}
                 </Badge>
               </div>
+
               <h3 className="text-lg leading-tight">{part.name}</h3>
               <p className="text-sm text-muted-foreground">{part.description}</p>
               <dl className="space-y-1 text-xs text-muted-foreground">
