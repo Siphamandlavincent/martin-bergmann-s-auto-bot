@@ -48,3 +48,9 @@ export const productImages: Record<string, string> = {
   "thermostat-housing": thermostatHousing,
   "wheel-bearing-kit": wheelBearingKit,
 };
+
+/** Resolve a parts.image_url slug to a bundled asset URL, if we have a photo. */
+export function productImage(slug: string | null | undefined): string | undefined {
+  if (!slug) return undefined;
+  return productImages[slug];
+}
