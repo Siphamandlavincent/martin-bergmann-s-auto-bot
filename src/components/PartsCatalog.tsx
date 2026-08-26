@@ -64,25 +64,26 @@ export function PartsCatalog({ parts }: { parts: Part[] }) {
           return (
           <Card
             key={part.id}
-            className="flex h-full flex-col gap-0 overflow-hidden border-2 py-0 transition-shadow hover:shadow-hard"
+            className="group flex h-full flex-col gap-0 overflow-hidden border-2 py-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-hard"
           >
-            <div className="relative flex aspect-[4/3] items-center justify-center border-b-2 border-ink bg-surface">
+            <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden border-b-2 border-ink bg-white">
               {image ? (
                 <img
                   src={image}
                   alt={`${part.brand} ${part.name}`}
-                  width={1024}
-                  height={1024}
+                  width={1000}
+                  height={750}
                   loading="lazy"
-                  className="size-full object-contain p-4 mix-blend-multiply"
+                  className="size-full object-contain transition-transform duration-500 group-hover:scale-105"
                 />
               ) : (
                 <>
                   <Wrench className="size-10 text-muted-foreground/60" />
-                  <div className="racing-stripe absolute inset-x-0 bottom-0 h-1.5 opacity-60" />
                 </>
               )}
+              <div className="racing-stripe absolute inset-x-0 bottom-0 h-1.5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
+
             <CardContent className="flex flex-1 flex-col space-y-3 p-5">
 
               <div className="flex items-start justify-between gap-3">
