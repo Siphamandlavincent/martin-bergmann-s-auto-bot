@@ -20,6 +20,8 @@ export type Database = {
           customer_email: string
           customer_name: string
           customer_phone: string
+          email_sent: boolean
+          email_sent_at: string | null
           id: string
           items: Json
           notes: string
@@ -33,6 +35,8 @@ export type Database = {
           customer_email?: string
           customer_name: string
           customer_phone?: string
+          email_sent?: boolean
+          email_sent_at?: string | null
           id?: string
           items?: Json
           notes?: string
@@ -46,6 +50,8 @@ export type Database = {
           customer_email?: string
           customer_name?: string
           customer_phone?: string
+          email_sent?: boolean
+          email_sent_at?: string | null
           id?: string
           items?: Json
           notes?: string
