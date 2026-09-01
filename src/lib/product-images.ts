@@ -1,3 +1,5 @@
+import alternator120a from "@/assets/products/alternator-120a.jpg";
+import cabinPollenFilter from "@/assets/products/cabin-pollen-filter.jpg";
 import agmBattery from "@/assets/products/agm-battery.jpg";
 import airFilterPanel from "@/assets/products/air-filter-panel.jpg";
 import brakeFluid from "@/assets/products/brake-fluid-dot4.jpg";
@@ -27,6 +29,8 @@ import wheelBearingKit from "@/assets/products/wheel-bearing-kit.jpg";
 /** Slugs stored in parts.image_url map to bundled studio product photos. */
 export const productImages: Record<string, string> = {
   "agm-battery": agmBattery,
+  "alternator-120a": alternator120a,
+  "cabin-pollen-filter": cabinPollenFilter,
   "air-filter-panel": airFilterPanel,
   "brake-fluid-dot4": brakeFluid,
   "clutch-kit": clutchKit,
