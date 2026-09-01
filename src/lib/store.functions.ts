@@ -141,11 +141,27 @@ Rules:
 
         orderPlaced = true;
         orderReference = inserted.id.slice(0, 8).toUpperCase();
-        console.log(
-          `NEW ORDER ${orderReference} for owner (autorepairsandparts@gmail.com):`,
-          JSON.stringify({ ...parsed, total }),
-        );
-        reply = `${reply}\n\nOrder reference: **${orderReference}** — it has been sent through to the store.`.trim();
+
+        const { sendOrderEmail } = await import("./order-email.server");
+        const emailed = await sendOrderEmail({
+          reference: orderReference,
+          customer_name: parsed.customer_name,
+          customer_phone: parsed.customer_phone,
+          customer_email: parsed.customer_email,
+          vehicle: parsed.vehicle,
+          notes: parsed.notes,
+          items: parsed.items,
+          total,
+        });
+
+        if (emailed) {
+          await supabaseAdmin
+            .from("orders")
+            .update({ email_sent: true, email_sent_at: new Date().toISOString() })
+            .eq("id", inserted.id);
+        }
+
+        reply = `${reply}\n\nOrder reference: **${orderReference}** — total ${`R${total.toFixed(2)}`}. It has been saved and sent through to the store.`.trim();
       } catch (error) {
         console.error("Order capture failed:", (error as Error).message);
         reply = `${reply}\n\nI couldn't finalise that order automatically — please call the store on the number below and quote your parts list.`.trim();

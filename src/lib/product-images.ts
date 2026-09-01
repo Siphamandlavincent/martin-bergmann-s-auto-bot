@@ -25,6 +25,7 @@ import thermostatHousing from "@/assets/products/thermostat-housing.jpg";
 import timingBeltKit from "@/assets/products/timing-belt-kit.jpg";
 import waterPump from "@/assets/products/water-pump.jpg";
 import wheelBearingKit from "@/assets/products/wheel-bearing-kit.jpg";
+import wheelBearingKitGeneric from "@/assets/products/wheel-bearing-kit-generic.jpg";
 
 /** Slugs stored in parts.image_url map to bundled studio product photos. */
 export const productImages: Record<string, string> = {
@@ -55,6 +56,7 @@ export const productImages: Record<string, string> = {
   "timing-belt-kit": timingBeltKit,
   "water-pump": waterPump,
   "wheel-bearing-kit": wheelBearingKit,
+  "wheel-bearing-kit-generic": wheelBearingKitGeneric,
 };
 
 /** Resolve a parts.image_url slug to a bundled asset URL, if we have a photo. */
